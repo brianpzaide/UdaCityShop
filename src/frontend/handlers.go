@@ -29,7 +29,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 
-	pb "github.com/GoogleCloudPlatform/microservices-demo/src/frontend/genproto"
+	"example.com/frontend/genproto/pb"
 	// "github.com/GoogleCloudPlatform/microservices-demo/src/frontend/money"
 )
 

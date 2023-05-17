@@ -19,13 +19,13 @@ from logger import getJSONLogger
 logger = getJSONLogger('adservice-v2-server')
 
 
-class AdServiceV2(demo_pb2_grpc.AdserviceV2Servicer, health_pb2_grpc.HealthServicer):
+class AdServiceV2(demo_pb2_grpc.AdServiceV2Servicer, health_pb2_grpc.HealthServicer):
     # Implemet the Ad service business logic
     
     def GetAdsV2(self, request, context):
         channel = grpc.insecure_channel("productcatalogservice:3550")
         client = demo_pb2_grpc.ProductCatalogServiceStub(channel)
-        response = stub.ListProducts(demo_pb2.Empty())
+        response = client.ListProducts(demo_pb2.Empty())
         random_products = random.sample(response.products, k=random.randint(1,5))
         random_ads = [demo_pb2.Ad(redirect_url=f'/product/{p.id}', text=f"AdV2 - Items with {5*random.randint(1,10)}% Discount!") for p in random_products]
         return demo_pb2.AdResponse(ads=random_ads)
@@ -44,7 +44,9 @@ if __name__ == "__main__":
     # create gRPC server, add the Ad-v2 service and start it
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
 
-    demo_pb2_grpc.add_AdServiceV2Servicer_to_server(AdServiceV2(), server)
+    service = AdServiceV2()
+
+    demo_pb2_grpc.add_AdServiceV2Servicer_to_server(service, server)
     
     health_pb2_grpc.add_HealthServicer_to_server(service, server)
 

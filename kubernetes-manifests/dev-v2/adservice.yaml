@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adservice
-  namespace: dev
+  namespace: dev-v2
 spec:
   selector:
     matchLabels:
@@ -16,12 +16,12 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: brianpzaide/adservice
+        image: brianpzaide/adservice-v2 
         ports:
-        - containerPort: 9555
+        - containerPort: 9556
         env:
         - name: PORT
-          value: "9555"
+          value: "9556"
         resources:
           requests:
             cpu: 200m
@@ -33,23 +33,23 @@ spec:
           initialDelaySeconds: 20
           periodSeconds: 15
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:9555"]
+            command: ["/bin/grpc_health_probe", "-addr=:9556"]
         livenessProbe:
           initialDelaySeconds: 20
           periodSeconds: 15
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:9555"]
+            command: ["/bin/grpc_health_probe", "-addr=:9556"]
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: adservice
-  namespace: dev
+  namespace: dev-v2
 spec:
   type: ClusterIP
   selector:
     app: adservice
   ports:
   - name: grpc
-    port: 9555
-    targetPort: 9555
+    port: 9556
+    targetPort: 9556
