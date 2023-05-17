@@ -67,9 +67,16 @@ func (fe *frontendServer) convertCurrency(ctx context.Context, money *pb.Money, 
 func (fe *frontendServer) getAd(ctx context.Context, ctxKeys []string) ([]*pb.Ad, error) {
 	ctx, cancel := context.WithTimeout(ctx, time.Millisecond*100)
 	defer cancel()
-
-	resp, err := pb.NewAdServiceV2Client(fe.adSvcConn).GetAdsV2(ctx, &pb.AdRequest{
-		ContextKeys: ctxKeys,
-	})
+	var resp *pb.AdResponse
+	if fe.svcVersion == "v2"{
+		resp, err := pb.NewAdServiceV2Client(fe.adSvcConn).GetAdsV2(ctx, &pb.AdRequest{
+			ContextKeys: ctxKeys,
+		})
+	}else{
+		resp, err := pb.NewAdServiceClient(fe.adSvcConn).GetAds(ctx, &pb.AdRequest{
+			ContextKeys: ctxKeys,
+		})
+	}
+	
 	return resp.GetAds(), errors.Wrap(err, "failed to get ads")
 }

@@ -43,6 +43,8 @@ spec:
             value: "currencyservice:7000"
           - name: AD_SERVICE_ADDR
             value: "adservice:9556"
+          - name: SVCVERSION
+            value: "v2"
           resources:
             requests:
               cpu: 100m
