@@ -1,3 +1,24 @@
+This repo contains my solution for the capstone project of [Cloud Native Application Architecture nanodegree](https://www.udacity.com/course/cloud-native-application-architecture-nanodegree--nd064)
+
+Todo:
+
+- [x] Use Github Actions to automate the build and push of the Docker images to DockerHub, for all Uda'CityShop microservices.
+
+- [x] Construct declarative Kubernetes manifest to deploy the Uda'CityShop to multiple environments.
+    
+- [x] Deploy the Uda'CityShop microservices using ArgoCD to the Kubernetes cluster, including dev and prod namespaces.
+    
+- [x] Apply best security practices and include a short SHA to the new Docker tags. This removes the need to use ```latest``` tag and transitions to a more secure, pinned tag system.
+    
+- [ ] Use Grafana and Prometheus to construct a dashboard and monitor the Uda'CityShop microservices.
+
+- [x] Rewrite the Ad Service using python and apply best grpc practices.
+    
+- [x] Construct a Dockerfile for the refactored Ad Service and use Github Actions and ArgoCD to deploy the application to a kubernetes cluster.
+
+
+
+
 <p align="center">
 <img src="src/frontend/static/icons/Hipster_HeroLogoCyan.svg" width="300" alt="Online Boutique" />
 </p>
