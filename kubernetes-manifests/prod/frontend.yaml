@@ -15,7 +15,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: brianpzaide/frontendservice
+          image: brianpzaide/frontendservice:sha-bda3b45
           ports:
           - containerPort: 8080
           readinessProbe:

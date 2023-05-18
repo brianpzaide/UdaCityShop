@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: brianpzaide/currencyservice
+        image: brianpzaide/currencyservice:sha-bda3b45
         ports:
         - name: grpc
           containerPort: 7000

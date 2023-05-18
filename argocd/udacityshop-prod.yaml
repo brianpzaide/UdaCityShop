@@ -12,5 +12,4 @@ spec:
     path: kubernetes-manifests/prod
     repoURL: https://github.com/brianpzaide/UdaCityShop
     targetRevision: HEAD
-  syncPolicy: 
-    manual: {}
+  syncPolicy: {}

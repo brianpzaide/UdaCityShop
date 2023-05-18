@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: brianpzaide/productcatalogservice
+        image: brianpzaide/productcatalogservice:sha-bda3b45
         ports:
         - containerPort: 3550
         env:
