@@ -1,6 +1,6 @@
 This repo contains my solution for the capstone project of [Cloud Native Application Architecture nanodegree](https://www.udacity.com/course/cloud-native-application-architecture-nanodegree--nd064)
 
-Todo:
+Tasks for the capstone project:
 
 - [x] Use Github Actions to automate the build and push of the Docker images to DockerHub, for all Uda'CityShop microservices.
 
